@@ -65,24 +65,47 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+
+
+var _lodash = __webpack_require__(1);
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _additionCalculator = __webpack_require__(4);
+
+var _additionCalculator2 = _interopRequireDefault(_additionCalculator);
+
+var _taxCalculator = __webpack_require__(5);
+
+var _taxCalculator2 = _interopRequireDefault(_taxCalculator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function component() {
   var element = document.createElement('div');
 
   // Lodash, now imported by this script
-  element.innerHTML = __WEBPACK_IMPORTED_MODULE_0_lodash___default.a.join(['Hello', 'webpack'], ' ');
+  element.innerHTML = _lodash2.default.join(['Hello', 'webpack'], ' ');
 
   return element;
 }
 
 document.body.appendChild(component());
 
+/*2つのアイテムの価格を合算し、消費税込みの価格を出力*/
+
+// import 文を使ってjsファイルを読み込む。
+
+var item1Price = 400;
+var item2Price = 600;
+var totalPrice = (0, _additionCalculator2.default)(item1Price, item2Price);
+var tax = 1.08;
+var priceIncludeTax = (0, _taxCalculator2.default)(totalPrice, tax);
+
+console.log(priceIncludeTax);
 
 /***/ }),
 /* 1 */
@@ -17230,6 +17253,36 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = additionCalculator;
+function additionCalculator(number1, number2) {
+  return number1 + number2;
+}
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = taxCalculator;
+function taxCalculator(price, tax) {
+  return Math.round(price * tax);
+}
 
 /***/ })
 /******/ ]);
